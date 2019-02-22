@@ -1,8 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import axios from "axios";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
+  componentDidMount() {
+    axios
+      .get("https://tutorialuskillshare.herokuapp.com/api/getUser", {
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        }
+      })
+      .then(response => {
+        let data = response.data;
+        console.log({ data });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div className="App">

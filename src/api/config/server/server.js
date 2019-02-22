@@ -30,6 +30,12 @@ connection.connect(function(err) {
   console.log("Connected to the MySQL server.");
 });
 
+app.get("/", function(req, res) {
+  return res.send({
+    "hello"
+  });
+});
+
 // Retrieve all todos
 app.get("/api/getUser", function(req, res) {
   connection.query("SELECT * FROM tblUser", function(error, results, fields) {
